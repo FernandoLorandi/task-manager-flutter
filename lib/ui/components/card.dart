@@ -20,6 +20,7 @@ class TaskCard extends StatefulWidget {
 class _TaskCardState extends State<TaskCard> {
   int nivel = 0;
 
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -54,9 +55,9 @@ class _TaskCardState extends State<TaskCard> {
                 ),
                 height: 100,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
+                      margin: EdgeInsets.only(right: 16),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: Colors.white,

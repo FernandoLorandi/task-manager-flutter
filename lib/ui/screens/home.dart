@@ -1,6 +1,6 @@
+import 'package:first_project/data/task_inherited.dart';
+import 'package:first_project/ui/screens/form_screen.dart';
 import 'package:flutter/material.dart';
-
-import '../components/card.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -21,52 +21,21 @@ class _HomeState extends State<Home> {
         title: Text("Tarefas", style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
       ),
-      body: AnimatedOpacity(
-        opacity: opacity ? 1 : 0,
-        duration: Duration(milliseconds: 500),
-        child: ListView(
-          children: <Widget>[
-            TaskCard(
-              title: "Aprender Flutter",
-              imageCard:
-                  "https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large",
-              difficultLevel: 1,
-            ),
-            TaskCard(
-              title: "Aprender JavaScript",
-              imageCard: "https://i.redd.it/f4x5xj63bzoa1.png",
-              difficultLevel: 4,
-            ),
-            TaskCard(
-              title: "Aprender JavaScript",
-              imageCard: "https://i.redd.it/f4x5xj63bzoa1.png",
-              difficultLevel: 4,
-            ),
-            TaskCard(
-              title: "Aprender JavaScript",
-              imageCard: "https://i.redd.it/f4x5xj63bzoa1.png",
-              difficultLevel: 4,
-            ),
-            TaskCard(
-              title: "Aprender JavaScript",
-              imageCard: "https://i.redd.it/f4x5xj63bzoa1.png",
-              difficultLevel: 4,
-            ),
-            TaskCard(
-              title: "Aprender JavaScript",
-              imageCard: "https://i.redd.it/f4x5xj63bzoa1.png",
-              difficultLevel: 4,
-            ),
-          ],
-        ),
-      ),
+      body: ListView(children: TaskInherited.of(context).taskList),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {
-            opacity = !opacity;
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (contextNew) {
+                  return FormScreen(taskContext: context);
+                },
+              ),
+            );
           });
         },
-        child: opacity ? Icon(Icons.visibility) : Icon(Icons.visibility_off),
+        child: Icon(Icons.add),
       ),
     );
   }
